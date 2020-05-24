@@ -1,12 +1,13 @@
 %define		pkgname	tar
 Summary:	Library for working with ".tar" archive files
 Name:		ghc-%{pkgname}
-Version:	0.4.0.1
+Version:	0.5.1.1
 Release:	1
 License:	BSD
 Group:		Development/Languages
 Source0:	http://hackage.haskell.org/packages/archive/%{pkgname}/%{version}/%{pkgname}-%{version}.tar.gz
-# Source0-md5:	a037976a434d6a55cad3e07f54686ffd
+# Source0-md5:	03938648a3d6d62cfd27d1f9d5d86f8b
+Patch0:		ghc-8.10.patch
 URL:		http://hackage.haskell.org/package/tar/
 BuildRequires:	ghc >= 6.12.3
 BuildRequires:	rpmbuild(macros) >= 1.608
@@ -37,6 +38,7 @@ Dokumentacja w formacie HTML dla %{pkgname}.
 
 %prep
 %setup -q -n %{pkgname}-%{version}
+%patch0 -p1
 
 %build
 runhaskell Setup.lhs configure -v2 \
